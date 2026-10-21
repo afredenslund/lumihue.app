@@ -17,8 +17,10 @@
   box-sizing: border-box;
 }
 
+/* Scroll snap: videoen er én skærm, indholdet den næste */
 html {
   scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
 }
 
 body {
@@ -81,6 +83,17 @@ a:hover {
   min-height: 480px;
   overflow: hidden;
   background: #000;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+/* Skærmen med indholdet: intro midt på, footer i bunden */
+.screen {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100svh;
+  scroll-snap-align: start;
 }
 
 .hero-video {
@@ -136,9 +149,14 @@ a:hover {
   }
 }
 
-/* Logo og kort intro, centreret under videoen */
+/* Logo og kort intro, centreret lodret og vandret på sin skærm */
 .intro {
-  padding: 96px 0 72px;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 56px 0 40px;
   text-align: center;
 }
 
@@ -181,6 +199,7 @@ a:hover {
 
 /* Footeren er helt sekundær: lille, dæmpet og uden farvede links */
 footer {
+  margin-top: auto;
   padding: 28px 0 40px;
   border-top: 1px solid var(--border);
   color: color-mix(in srgb, var(--muted) 70%, var(--bg));
@@ -309,7 +328,7 @@ footer .linklike:hover {
   }
 
   .intro {
-    padding: 64px 0 48px;
+    padding: 40px 0 32px;
   }
 
   /* Mens cookievalget er åbent, viger pilen for banneret */

@@ -1,6 +1,6 @@
 # lumihue.app
 
-Hjemmesiden for **LumiHue**, et roligt, lokalt webinterface til Philips Hue. Sitet er én statisk side: en introvideo i fuld højde og en kort tekst. Ingen byggetrin, sporing eller eksterne afhængigheder i browseren.
+Hjemmesiden for **LumiHue**, et roligt, lokalt webinterface til Philips Hue. Sitet er én statisk side i to skærme med scroll snap: introvideoen i fuld højde og derefter den korte tekst med footer. Ingen byggetrin eller eksterne afhængigheder i browseren ud over Google Analytics efter cookievalg.
 
 Live: **https://lumihue.app/** (også `www.lumihue.app`).
 
