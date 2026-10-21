@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>LumiHue – rolig, lokal styring af Philips Hue</title>
+    <title>LumiHue – lokal adgang til Philips Hue</title>
     <meta
       name="description"
-      content="LumiHue er et roligt, lokalt webinterface til Philips Hue. Det kører i dit eget hjem, taler direkte med din Hue Bridge og lader opsætningen blive på broen."
+      content="LumiHue er lokal adgang til Philips Hue med dataopsamling og avanceret opsætning. Sonar logger dine sensorer, adaptiv sensorstyring gør sensorstyret lys enklere, og det hele gemmes på broen."
     />
     <meta name="theme-color" content="#111518" />
     <meta name="color-scheme" content="dark" />
@@ -15,144 +15,88 @@
     <meta property="og:site_name" content="LumiHue" />
     <meta property="og:locale" content="da_DK" />
     <meta property="og:url" content="https://lumihue.app/" />
-    <meta property="og:title" content="LumiHue – rolig, lokal styring af Philips Hue" />
+    <meta property="og:title" content="LumiHue – lokal adgang til Philips Hue" />
     <meta
       property="og:description"
-      content="Et roligt, lokalt webinterface til Philips Hue. Kører i dit eget hjem, uden cloud og uden konto."
+      content="Dataopsamling, Sonar og adaptiv sensorstyring til Philips Hue. Det hele gemmes på broen."
     />
+    <meta property="og:image" content="https://lumihue.app/media/lumihue-intro-poster.jpg" />
+    <meta property="og:image:width" content="1280" />
+    <meta property="og:image:height" content="720" />
+    <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" href="./favicon.ico" sizes="any" />
     <link rel="icon" type="image/png" sizes="256x256" href="./brand/favicon-256.png" />
     <link rel="apple-touch-icon" href="./brand/apple-touch-icon.png" />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <a class="skip" href="#indhold">Gå til indhold</a>
+    <a class="skip" href="#intro">Gå til indhold</a>
 
-    <header class="top">
-      <div class="shell top-row">
-        <a class="brand" href="./" aria-label="LumiHue, forside">
-          <img src="./brand/lumihue-logo-horizontal-white.png" width="1800" height="480" alt="LumiHue" />
-        </a>
-        <nav aria-label="Sidens afsnit">
-          <a href="#saadan">Sådan virker det</a>
-          <a href="#funktioner">Funktioner</a>
-          <a href="#status">Status</a>
-          <a href="https://github.com/afredenslund/lumihue.app" rel="noopener">GitHub</a>
-        </nav>
-      </div>
-    </header>
-
-    <main id="indhold">
-      <section class="hero shell">
-        <p class="chip"><span class="dot" aria-hidden="true"></span>Privat beta · open source på vej</p>
-        <h1>Dit lys. Din rytme.</h1>
-        <p class="lead">
-          LumiHue er et roligt, lokalt webinterface til Philips Hue. Det kører på en computer i dit eget
-          hjem, taler direkte med din Hue Bridge og lader opsætningen blive, hvor den hører hjemme: på
-          broen.
-        </p>
-      </section>
-
-      <section id="saadan" class="shell">
-        <h2>Sådan virker det</h2>
-        <div class="grid three">
-          <article class="card">
-            <h3>Lokalt og uden konto</h3>
-            <p>
-              Ingen cloud, intet login og ingen eksterne tjenester. LumiHue kører på hjemmets netværk, og
-              målingerne fra dine sensorer bliver hos dig.
-            </p>
-          </article>
-          <article class="card">
-            <h3>Hue-appen er stadig sandheden</h3>
-            <p>
-              Rum, zoner, scener og automatik gemmes på Hue Bridge i Hues eget format. Det, du ændrer i
-              LumiHue, kan du se og redigere i Hue-appen. Og omvendt.
-            </p>
-          </article>
-          <article class="card">
-            <h3>Automatik kører på broen</h3>
-            <p>
-              Tidsplaner og sensorstyring installeres som broens egne regler. Computeren kan slukkes, og
-              lyset fortsætter som planlagt.
-            </p>
-          </article>
+    <main>
+      <section class="hero" aria-label="Intro">
+        <video
+          class="hero-video"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="auto"
+          poster="./media/lumihue-intro-poster.jpg"
+          aria-hidden="true"
+          tabindex="-1"
+        >
+          <source src="./media/lumihue-intro.mp4" type="video/mp4" />
+        </video>
+        <div class="hero-top">
+          <div class="shell">
+            <a class="brand" href="./" aria-label="LumiHue, forside">
+              <img src="./brand/lumihue-logo-horizontal-white.png" width="1800" height="480" alt="LumiHue" />
+            </a>
+          </div>
         </div>
+        <a class="more" href="#intro" aria-label="Rul ned til introduktionen">
+          <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true" focusable="false">
+            <path
+              d="M5 9l7 7 7-7"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </a>
       </section>
 
-      <section id="funktioner" class="shell">
-        <h2>Det kan du i LumiHue</h2>
-        <dl class="features">
-          <div>
-            <dt>Rum og zoner</dt>
-            <dd>
-              Hele huset, et rum eller en zone på ét kort. Hvert lys har to skydere: hvidtone eller farve
-              øverst, styrke nederst. Pærerne står i samme rækkefølge som i Hue-appen.
-            </dd>
-          </div>
-          <div>
-            <dt>Scener</dt>
-            <dd>
-              Almindelige, dynamiske og 24-timers scener samlet pr. rum, med egne ikoner og et fælles
-              scenesæt på tværs af hjemmet.
-            </dd>
-          </div>
-          <div>
-            <dt>Sonar</dt>
-            <dd>
-              Lys, temperatur og bevægelse fra dine Hue-sensorer som grafer, med solens gang som reference
-              og plads til egne noter.
-            </dd>
-          </div>
-          <div>
-            <dt>Regler</dt>
-            <dd>
-              Hjemmets grundregler i almindeligt sprog og adaptiv sensorstyring, der forlænger lyset ved
-              aktivitet og slukker roligt bagefter.
-            </dd>
-          </div>
-          <div>
-            <dt>LumiLab</dt>
-            <dd>
-              En virtuel testbro med syntetiske pærer, hvor nye idéer kan afprøves uden at røre hjemmets
-              lys.
-            </dd>
-          </div>
-          <div>
-            <dt>Roligt design</dt>
-            <dd>
-              Mørk flade, dæmpede farver og så lidt som muligt i vejen. Det valgte råber ikke op. Det
-              fravalgte træder tilbage.
-            </dd>
-          </div>
-        </dl>
-      </section>
-
-      <section id="status" class="shell">
-        <h2>Status</h2>
-        <p>
-          LumiHue er et hobbyprojekt, der i dag kører i ét hjem og udvikles løbende. Koden er privat, mens
-          den modnes. Målet er at udgive den som open source, når opsætning og dokumentation kan bruges af
-          andre.
+      <section id="intro" class="intro shell">
+        <p class="lead">
+          LumiHue er lokal adgang til Philips Hue med dataopsamling og avanceret opsætning.
         </p>
-        <p>
-          <a class="button" href="https://github.com/afredenslund/lumihue.app" rel="noopener"
-            >Følg projektet på GitHub</a
-          >
-        </p>
+        <ul class="points">
+          <li><strong>Sonar</strong> logger alle data fra dine sensorer.</li>
+          <li><strong>Adaptiv sensorstyring</strong> gør livet med sensorstyret lys enklere.</li>
+          <li><strong>Rum og zoner</strong> giver overblik med nem adgang til at ændre navne og opsætning.</li>
+          <li><strong>Det hele gemmes på broen.</strong></li>
+        </ul>
       </section>
     </main>
 
     <footer class="shell">
       <p>
         LumiHue er et uafhængigt hobbyprojekt af Anders Fredenslund. Philips og Hue er varemærker
-        tilhørende deres respektive ejere. LumiHue er ikke tilknyttet eller godkendt af Signify eller
-        Philips.
-      </p>
-      <p lang="en">
-        LumiHue is a calm, local web interface for Philips Hue. English documentation will follow with the
-        open source release.
+        tilhørende deres respektive ejere.
       </p>
     </footer>
+
+    <script>
+      // Ved ønske om mindre bevægelse vises plakatbilledet i stedet for automatisk afspilning.
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        var video = document.querySelector(".hero-video");
+        if (video) {
+          video.removeAttribute("autoplay");
+          video.pause();
+        }
+      }
+    </script>
   </body>
 </html>
