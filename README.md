@@ -1,54 +1,43 @@
 # lumihue.app
 
-Hjemmesiden for **LumiHue**, et roligt, lokalt webinterface til Philips Hue. Sitet er én statisk side uden byggetrin, afhængigheder eller sporing.
+Hjemmesiden for **LumiHue**, et roligt, lokalt webinterface til Philips Hue. Sitet er én statisk side uden byggetrin, sporing eller eksterne afhængigheder i browseren.
+
+Live: **https://lumihue.app/** (også `www.lumihue.app`).
 
 ## Struktur
 
-- `site/` er alt, der udgives: `index.html`, `styles.css`, `404.html`, `robots.txt` og `brand/`.
-- `site/brand/` indeholder det vandrette hvide logo og symbolet som leveret, samt to nedskalerede udgaver af symbolet til faneikon og Apple-touch-ikon.
-- `.github/workflows/pages.yml` udgiver `site/` til GitHub Pages ved hvert push til `main`.
+- `site/` er alt, der udgives: `index.html`, `styles.css`, `404.html`, `robots.txt`, `favicon.ico` og `brand/`.
+- `site/brand/` indeholder det vandrette hvide logo og symbolet som leveret, samt nedskalerede udgaver af symbolet til faneikon og Apple-touch-ikon.
+- `wrangler.jsonc` beskriver Cloudflare-Workeren **lumihue-app**: mappen `site` udgives som statiske filer, og `404.html` bruges ved ukendte adresser.
+- `package.json` og `package-lock.json` fastlåser `wrangler`, så Cloudflares byggesystem kører samme version hver gang.
+- `.github/workflows/pages.yml` er en reserveudgivelse til GitHub Pages, uafhængig af Cloudflare.
 
-Alle stier i HTML er relative, så siden virker både på `https://afredenslund.github.io/lumihue.app/` og på `https://lumihue.app/`.
+Alle stier i HTML er relative, så siden virker uanset vært.
 
 ## Se siden lokalt
 
 ```sh
-python3 -m http.server 8765 --directory site
+npm run preview
 ```
 
-Åbn derefter `http://127.0.0.1:8765/`.
+Det starter `python3 -m http.server 8765 --directory site`; åbn `http://127.0.0.1:8765/`. Alternativt kører `npx wrangler dev` sitet gennem Cloudflares lokale Worker-runtime.
 
 ## Udgivelse
 
-GitHub Actions bygger ikke noget, men pakker `site/` og udgiver den til GitHub Pages. Første gang skal Pages være slået til under *Settings → Pages* med kilden **GitHub Actions**. Herefter udgives hvert push til `main` automatisk, og *Actions*-fanen viser status.
+Sitet hostes som Cloudflare Worker med statiske assets. Workers Builds er forbundet til dette repository: hvert push til `main` kører `npx wrangler deploy` uden byggekommando og udgiver en ny version på få sekunder. Status og byggelog findes i Cloudflare under *Workers & Pages → lumihue-app → Deployments*. Preview builds er slået til, så andre grene får en midlertidig preview-adresse.
 
-## Domænet lumihue.app
+Adresser:
 
-Domænets DNS ligger hos Cloudflare. For at pege det på GitHub Pages:
+- `https://lumihue.app/` og `https://www.lumihue.app/` (Custom Domains på Workeren)
+- `https://lumihue-app.anders-70b.workers.dev/` (Workerens egen adresse)
 
-1. Opret disse poster i Cloudflare med proxy-status **DNS only** (grå sky), i hvert fald indtil certifikatet er udstedt:
+## Domænet
 
-   | Type  | Navn | Indhold                     |
-   | ----- | ---- | --------------------------- |
-   | A     | `@`  | `185.199.108.153`           |
-   | A     | `@`  | `185.199.109.153`           |
-   | A     | `@`  | `185.199.110.153`           |
-   | A     | `@`  | `185.199.111.153`           |
-   | AAAA  | `@`  | `2606:50c0:8000::153`       |
-   | AAAA  | `@`  | `2606:50c0:8001::153`       |
-   | AAAA  | `@`  | `2606:50c0:8002::153`       |
-   | AAAA  | `@`  | `2606:50c0:8003::153`       |
-   | CNAME | `www` | `afredenslund.github.io`   |
+`lumihue.app` ligger som zone i samme Cloudflare-konto. Begge værtsnavne er tilføjet som *Custom Domains* under Workerens fane *Domains*; Cloudflare oprettede selv DNS-posterne og certifikatet. Der skal ikke vedligeholdes manuelle DNS-poster for sitet. Alle `.app`-domæner kræver HTTPS, fordi hele topdomænet er forhåndsregistreret til HSTS.
 
-2. Skriv `lumihue.app` i *Settings → Pages → Custom domain* på dette repository og gem. GitHub kontrollerer DNS og udsteder et certifikat; det tager typisk få minutter, men kan tage op til en time.
-3. Slå **Enforce HTTPS** til, når feltet bliver aktivt. Alle `.app`-domæner kræver HTTPS, fordi hele topdomænet er forhåndsregistreret til HSTS.
-4. Valgfrit, men anbefalet: verificér domænet for kontoen under *Settings → Pages → Verified domains* på GitHub-kontoen, så ingen andre kan udgive Pages på domænet.
+## GitHub Pages som reserve
 
-Når det er gjort, viderestiller `afredenslund.github.io/lumihue.app/` automatisk til `lumihue.app`.
-
-### Alternativ: Cloudflare Pages
-
-Sitet er rene statiske filer, så det kan lige så godt udgives fra Cloudflare Pages med `site/` som output-mappe og uden byggekommando. Så ligger både DNS og hosting samme sted. Workflowet her kan i så fald slettes.
+Workflowet udgiver fortsat `site/` til `https://afredenslund.github.io/lumihue.app/` ved hvert push. Det koster ikke noget og kan slettes sammen med Pages-indstillingen på repositoryet, hvis reserven ikke ønskes.
 
 ## Logo og rettigheder
 
