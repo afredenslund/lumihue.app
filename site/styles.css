@@ -6,6 +6,8 @@
   --border: #344047;
   --muted: #a8b5bc;
   --accent: #dcf99d;
+  --accent-fg: #182016;
+  --card: #1a2024;
   --shell: 960px;
   --gutter: 16px;
   --font: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -184,6 +186,99 @@ footer p {
   max-width: 60em;
 }
 
+/* Cookievalg: lille kort nederst, til højre på brede skærme */
+.consent {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  left: 16px;
+  z-index: 30;
+  max-width: 420px;
+  margin-left: auto;
+  padding: 16px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.consent[hidden] {
+  display: none;
+}
+
+.consent-text {
+  margin: 0 0 12px;
+}
+
+.consent-text strong {
+  color: var(--fg);
+}
+
+.consent-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.consent button {
+  padding: 8px 14px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--fg);
+  font: inherit;
+  cursor: pointer;
+}
+
+.consent-no:hover {
+  border-color: var(--muted);
+}
+
+.consent-yes {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--accent-fg);
+  font-weight: 600;
+}
+
+.consent-yes:hover {
+  filter: brightness(1.04);
+}
+
+.linklike {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--accent);
+  font: inherit;
+  cursor: pointer;
+}
+
+.linklike:hover {
+  text-decoration: underline;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .consent {
+    animation: consent-in 0.3s ease-out;
+  }
+
+  @keyframes consent-in {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
+
 /* Smalle skærme */
 @media (max-width: 760px) {
   .brand {
@@ -197,6 +292,11 @@ footer p {
 
   .intro {
     padding: 64px 0 48px;
+  }
+
+  /* Mens cookievalget er åbent, viger pilen for banneret */
+  body.consent-open .more {
+    opacity: 0;
   }
 }
 

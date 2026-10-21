@@ -40,6 +40,12 @@
         ad_personalization: "denied",
         analytics_storage: "denied",
       });
+      // Et tidligere "Ja, gerne" i cookievalget gælder straks, før første måling sendes.
+      try {
+        if (localStorage.getItem("lumihue-consent") === "granted") {
+          gtag("consent", "update", { analytics_storage: "granted" });
+        }
+      } catch (error) {}
       gtag("js", new Date());
       gtag("config", "G-7GD8RTPDVM");
     </script>
@@ -94,8 +100,20 @@
       <p>
         LumiHue er et uafhængigt hobbyprojekt af Anders Fredenslund. Philips og Hue er varemærker
         tilhørende deres respektive ejere.
+        <button type="button" class="linklike" data-consent-open>Cookievalg</button>
       </p>
     </footer>
+
+    <section class="consent" id="cookievalg" aria-label="Cookievalg" hidden>
+      <p class="consent-text">
+        <strong>Besøgsstatistik.</strong> Må vi bruge Google Analytics til at se, hvor mange der besøger
+        siden? Det sætter en cookie. Uden samtykke måler vi kun anonymt og uden cookies.
+      </p>
+      <div class="consent-actions">
+        <button type="button" class="consent-no" data-consent="denied">Nej tak</button>
+        <button type="button" class="consent-yes" data-consent="granted">Ja, gerne</button>
+      </div>
+    </section>
 
     <script>
       (function () {
@@ -151,5 +169,6 @@
         });
       })();
     </script>
+    <script src="./consent.js" defer></script>
   </body>
 </html>
