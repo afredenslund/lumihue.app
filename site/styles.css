@@ -348,11 +348,24 @@ footer .linklike:hover {
   }
 
   .intro {
-    padding: 40px 0 32px;
+    padding: 32px 0 24px;
+  }
+
+  .lead {
+    margin-bottom: 24px;
+    font-size: 1.35rem;
+  }
+
+  .points {
+    gap: 26px;
   }
 
   .beta {
-    margin-top: 32px;
+    margin-top: 26px;
+  }
+
+  footer {
+    padding: 22px 0 28px;
   }
 
   /* Mens cookievalget er åbent, viger pilen for banneret */
