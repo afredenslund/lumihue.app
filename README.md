@@ -10,7 +10,6 @@ Live: **https://lumihue.app/** (også `www.lumihue.app`).
 - `site/brand/` indeholder det vandrette hvide logo og symbolet som leveret, samt nedskalerede udgaver af symbolet til faneikon og Apple-touch-ikon.
 - `wrangler.jsonc` beskriver Cloudflare-Workeren **lumihue-app**: mappen `site` udgives som statiske filer, og `404.html` bruges ved ukendte adresser.
 - `package.json` og `package-lock.json` fastlåser `wrangler`, så Cloudflares byggesystem kører samme version hver gang.
-- `.github/workflows/pages.yml` er en reserveudgivelse til GitHub Pages, uafhængig af Cloudflare.
 
 Alle stier i HTML er relative, så siden virker uanset vært.
 
@@ -34,10 +33,6 @@ Adresser:
 ## Domænet
 
 `lumihue.app` ligger som zone i samme Cloudflare-konto. Begge værtsnavne er tilføjet som *Custom Domains* under Workerens fane *Domains*; Cloudflare oprettede selv DNS-posterne og certifikatet. Der skal ikke vedligeholdes manuelle DNS-poster for sitet. Alle `.app`-domæner kræver HTTPS, fordi hele topdomænet er forhåndsregistreret til HSTS.
-
-## GitHub Pages som reserve
-
-Workflowet udgiver fortsat `site/` til `https://afredenslund.github.io/lumihue.app/` ved hvert push. Det koster ikke noget og kan slettes sammen med Pages-indstillingen på repositoryet, hvis reserven ikke ønskes.
 
 ## Logo og rettigheder
 
