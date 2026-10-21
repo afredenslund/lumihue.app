@@ -197,6 +197,26 @@ a:hover {
   line-height: 1.3;
 }
 
+/* Afslutning: lille boks med hængelås */
+.beta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 44px 0 0;
+  padding: 10px 16px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--fg);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.beta svg {
+  color: var(--muted);
+  flex: none;
+}
+
 /* Footeren er helt sekundær: lille, dæmpet og uden farvede links */
 footer {
   margin-top: auto;
@@ -329,6 +349,10 @@ footer .linklike:hover {
 
   .intro {
     padding: 40px 0 32px;
+  }
+
+  .beta {
+    margin-top: 32px;
   }
 
   /* Mens cookievalget er åbent, viger pilen for banneret */
