@@ -159,17 +159,21 @@ a:hover {
 
 .points {
   display: grid;
-  gap: 14px;
+  gap: 22px;
   margin: 0 auto;
   padding: 0;
-  max-width: 40em;
+  max-width: 36em;
   list-style: none;
   color: var(--muted);
-  font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+  font-size: 0.95rem;
 }
 
+/* Det hvide ord står øverst, den grå forklaring nedenunder i mindre skrift */
 .points strong {
+  display: block;
+  margin-bottom: 4px;
   color: var(--fg);
+  font-size: clamp(1.05rem, 1.6vw, 1.2rem);
   font-weight: 600;
 }
 
