@@ -89,46 +89,16 @@ a:hover {
   object-fit: cover;
 }
 
-/* Let mørkning øverst bag logoet og blød overgang til siden nederst */
-.hero::before,
+/* Blød overgang fra videoen til siden */
 .hero::after {
   content: "";
   position: absolute;
   left: 0;
   right: 0;
-  pointer-events: none;
-}
-
-.hero::before {
-  top: 0;
-  height: 160px;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.4), transparent);
-}
-
-.hero::after {
   bottom: 0;
   height: 220px;
   background: linear-gradient(180deg, transparent, var(--bg));
-}
-
-.hero-top {
-  position: absolute;
-  top: 20px;
-  left: 0;
-  right: 0;
-  z-index: 2;
-}
-
-/* Logoet har eget frirum i filen; træk det ind, så symbolets kant følger indholdets kant */
-.brand {
-  display: inline-block;
-}
-
-.brand img {
-  width: auto;
-  height: 40px;
-  margin-left: -18px;
-  filter: drop-shadow(0 1px 10px rgba(0, 0, 0, 0.45));
+  pointer-events: none;
 }
 
 /* Lille pil: der er mere nedenunder */
@@ -164,13 +134,20 @@ a:hover {
   }
 }
 
-/* Kort intro */
+/* Logo og kort intro, centreret under videoen */
 .intro {
   padding: 96px 0 72px;
+  text-align: center;
+}
+
+.brand {
+  width: auto;
+  height: 44px;
+  margin: 0 auto 40px;
 }
 
 .lead {
-  margin: 0 0 32px;
+  margin: 0 auto 32px;
   max-width: 24em;
   font-size: clamp(1.5rem, 3.2vw, 2.25rem);
   font-weight: 600;
@@ -181,7 +158,7 @@ a:hover {
 .points {
   display: grid;
   gap: 14px;
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
   max-width: 40em;
   list-style: none;
@@ -199,18 +176,19 @@ footer {
   border-top: 1px solid var(--border);
   color: var(--muted);
   font-size: 14px;
+  text-align: center;
 }
 
 footer p {
-  margin: 0;
+  margin: 0 auto;
   max-width: 60em;
 }
 
 /* Smalle skærme */
 @media (max-width: 760px) {
-  .brand img {
-    height: 34px;
-    margin-left: -13px;
+  .brand {
+    height: 36px;
+    margin-bottom: 32px;
   }
 
   .more {
