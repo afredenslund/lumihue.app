@@ -6,7 +6,7 @@ Live: **https://lumihue.app/** (også `www.lumihue.app`).
 
 ## Struktur
 
-- `site/` er alt, der udgives: `index.html`, `styles.css`, `404.html`, `robots.txt`, `favicon.ico` og `brand/`.
+- `site/` er alt, der udgives: `index.html`, `styles.css`, `404.html`, `robots.txt`, `sitemap.xml`, `favicon.ico`, `brand/` og `media/`.
 - `site/brand/` indeholder det vandrette hvide logo og symbolet som leveret, samt nedskalerede udgaver af symbolet til faneikon og Apple-touch-ikon.
 - `site/media/` indeholder introvideoen i fuld højde (1280 × 720, 10 sekunder, H.264, cirka 4 MB) og dens plakatbillede, som også bruges som delingsbillede.
 - `wrangler.jsonc` beskriver Cloudflare-Workeren **lumihue-app**: mappen `site` udgives som statiske filer, og `404.html` bruges ved ukendte adresser.
