@@ -1,0 +1,318 @@
+/* LumiHue – samme mørke palette som appen */
+:root {
+  color-scheme: dark;
+  --bg: #111518;
+  --bg-top: #161c21;
+  --fg: #f2f4f2;
+  --card: #1a2024;
+  --card-top: #222b30;
+  --border: #344047;
+  --muted: #a8b5bc;
+  --accent: #dcf99d;
+  --accent-fg: #182016;
+  --radius: 0.8rem;
+  --shell: 960px;
+  --gutter: 16px;
+  --font: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: clip;
+  background: var(--bg) linear-gradient(180deg, var(--bg-top) 0, var(--bg) 520px) no-repeat;
+  color: var(--fg);
+  font: 16px/1.55 var(--font);
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.skip {
+  position: absolute;
+  left: 16px;
+  top: -48px;
+  padding: 8px 12px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  z-index: 20;
+}
+
+.skip:focus {
+  top: 12px;
+}
+
+.shell {
+  width: min(var(--shell), 100% - 2 * var(--gutter));
+  margin-inline: auto;
+}
+
+/* Header: fast øverst, let gennemsigtig med sløring, i fuld bredde */
+.top {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--bg);
+  border-bottom: 1px solid color-mix(in srgb, var(--border) 55%, transparent);
+}
+
+@supports ((backdrop-filter: blur(16px)) or (-webkit-backdrop-filter: blur(16px))) {
+  .top {
+    background: color-mix(in srgb, var(--bg) 74%, transparent);
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
+  }
+}
+
+.top-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px 16px;
+  min-height: 64px;
+  padding: 8px 0;
+}
+
+/* Logoet har eget frirum i filen; træk det ind, så symbolets kant følger indholdets kant */
+.brand img {
+  width: auto;
+  height: 40px;
+  margin-left: -18px;
+}
+
+nav {
+  display: flex;
+  gap: 20px;
+  max-width: 100%;
+  overflow-x: auto;
+  white-space: nowrap;
+  scrollbar-width: none;
+}
+
+nav::-webkit-scrollbar {
+  display: none;
+}
+
+nav a {
+  color: var(--muted);
+  font-size: 14px;
+  padding: 6px 0;
+}
+
+nav a:hover {
+  color: var(--fg);
+  text-decoration: none;
+}
+
+/* Hero */
+.hero {
+  position: relative;
+  padding: 72px 0 40px;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: -120px -40px auto -80px;
+  height: 420px;
+  background: radial-gradient(
+    ellipse at 18% 40%,
+    rgba(214, 102, 196, 0.16),
+    rgba(255, 170, 60, 0.07) 40%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: -1;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  padding: 4px 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: pulse 2.4s ease-out infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(220, 249, 157, 0.45);
+  }
+  70% {
+    box-shadow: 0 0 0 8px rgba(220, 249, 157, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(220, 249, 157, 0);
+  }
+}
+
+h1 {
+  margin: 20px 0 16px;
+  font-size: clamp(2.2rem, 6vw, 3.6rem);
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+}
+
+.lead {
+  margin: 0;
+  max-width: 40em;
+  color: var(--muted);
+  font-size: clamp(1.05rem, 2.2vw, 1.25rem);
+}
+
+/* Afsnit */
+section {
+  padding: 40px 0;
+}
+
+h2 {
+  margin: 0 0 20px;
+  font-size: 1.35rem;
+  font-weight: 600;
+}
+
+.grid.three {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.card {
+  padding: 20px;
+  background: linear-gradient(180deg, var(--card-top), var(--card));
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.card h3 {
+  margin: 0 0 8px;
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.card p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.features {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 32px;
+  margin: 0;
+}
+
+.features > div {
+  padding: 16px 0;
+  border-top: 1px solid var(--border);
+}
+
+.features dt {
+  margin-bottom: 4px;
+  font-weight: 600;
+}
+
+.features dd {
+  margin: 0;
+  color: var(--muted);
+}
+
+#status p {
+  max-width: 44em;
+}
+
+.button {
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--accent-fg);
+  font-weight: 600;
+}
+
+.button:hover {
+  text-decoration: none;
+  filter: brightness(1.04);
+}
+
+footer {
+  padding: 40px 0 56px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 14px;
+}
+
+footer p {
+  margin: 0 0 10px;
+  max-width: 60em;
+}
+
+/* Smalle skærme */
+@media (max-width: 760px) {
+  .grid.three,
+  .features {
+    grid-template-columns: 1fr;
+  }
+
+  .brand img {
+    height: 34px;
+    margin-left: -13px;
+  }
+
+  .hero {
+    padding-top: 48px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .dot {
+    animation: none;
+  }
+}
