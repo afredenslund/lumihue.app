@@ -36,6 +36,12 @@ Adresser:
 
 `lumihue.app` ligger som zone i samme Cloudflare-konto. Begge værtsnavne er tilføjet som *Custom Domains* under Workerens fane *Domains*; Cloudflare oprettede selv DNS-posterne og certifikatet. Der skal ikke vedligeholdes manuelle DNS-poster for sitet. Alle `.app`-domæner kræver HTTPS, fordi hele topdomænet er forhåndsregistreret til HSTS.
 
+## Søgning og besøgsstatistik
+
+- `site/sitemap.xml` og `site/robots.txt` ligger i udgivelsen; robots.txt henviser til sitemappet. Cloudflare tillader alle bots på zonen: Bot Fight Mode og AI Labyrinth er slået fra, og AI-politikkerne står på *Allow* for søgning, agenter og træning.
+- **Google Search Console:** domæneejendommen `lumihue.app` er verificeret via en TXT-post i Cloudflare DNS (`google-site-verification=…`). Sitemappet er indsendt. Slet ikke TXT-posten; Google kontrollerer den løbende.
+- **Google Analytics 4:** ejendommen `lumihue.app` med webdatastrømmen `lumihue.app`, målings-id `G-7GD8RTPDVM`. Scriptet i `index.html` sætter Consent Mode til *denied* som standard: der sættes ingen cookies, og Google modtager kun cookieløse målinger med begrænsede rapporter (sidevisninger, land, kilde). Ønskes fuld måling med cookies, kræver det et samtykkebanner, der kalder `gtag("consent", "update", { analytics_storage: "granted" })` efter accept.
+
 ## Logo og rettigheder
 
 Navn og logo tilhører projektets ophavsmand og er ikke frigivet til fri brug. Der er endnu ikke valgt en licens til sitets kode og tekst; indtil da gælder almindelig ophavsret.
