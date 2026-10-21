@@ -179,17 +179,29 @@ a:hover {
   line-height: 1.3;
 }
 
+/* Footeren er helt sekundær: lille, dæmpet og uden farvede links */
 footer {
-  padding: 32px 0 48px;
+  padding: 28px 0 40px;
   border-top: 1px solid var(--border);
-  color: var(--muted);
-  font-size: 14px;
+  color: color-mix(in srgb, var(--muted) 70%, var(--bg));
+  font-size: 12px;
+  line-height: 1.5;
   text-align: center;
 }
 
 footer p {
   margin: 0 auto;
   max-width: 60em;
+}
+
+footer .linklike {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+footer .linklike:hover {
+  color: var(--muted);
 }
 
 /* Cookievalg: lille kort nederst, til højre på brede skærme */
