@@ -10,6 +10,7 @@ Live: **https://lumihue.app/** (også `www.lumihue.app`).
 - `site/brand/` indeholder det vandrette hvide logo og symbolet som leveret, samt nedskalerede udgaver af symbolet til faneikon og Apple-touch-ikon.
 - `site/media/` indeholder introvideoen i fuld højde (1280 × 720, 10 sekunder, H.264, cirka 4 MB) og dens plakatbillede, som også bruges som delingsbillede.
 - `wrangler.jsonc` beskriver Cloudflare-Workeren **lumihue-app**: mappen `site` udgives som statiske filer, og `404.html` bruges ved ukendte adresser.
+- `src/index.js` kører kun for `/media/*` og svarer på HTTP Range-forespørgsler med 206-delsvar, som Safari kræver for at afspille video. Alle andre adresser serveres direkte som statiske filer.
 - `package.json` og `package-lock.json` fastlåser `wrangler`, så Cloudflares byggesystem kører samme version hver gang.
 
 Alle stier i HTML er relative, så siden virker uanset vært.
