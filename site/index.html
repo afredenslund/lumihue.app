@@ -38,7 +38,6 @@
           class="hero-video"
           autoplay
           muted
-          loop
           playsinline
           preload="auto"
           poster="./media/lumihue-intro-poster.jpg"
@@ -83,14 +82,58 @@
     </footer>
 
     <script>
-      // Ved ønske om mindre bevægelse vises plakatbilledet i stedet for automatisk afspilning.
-      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      (function () {
         var video = document.querySelector(".hero-video");
-        if (video) {
+        if (!video) return;
+        var RESTART_DELAY = 30000;
+        var scrolled = false;
+        var restartTimer = null;
+
+        // Ved ønske om mindre bevægelse vises plakatbilledet i stedet for automatisk afspilning.
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
           video.removeAttribute("autoplay");
           video.pause();
+          video.dataset.state = "still";
+          return;
         }
-      }
+
+        video.dataset.state = "playing";
+
+        // Er man begyndt at scrolle, bliver videoen stående, når den er slut.
+        window.addEventListener(
+          "scroll",
+          function () {
+            if (window.scrollY <= 0 || scrolled) return;
+            scrolled = true;
+            if (restartTimer) {
+              clearTimeout(restartTimer);
+              restartTimer = null;
+              video.dataset.state = "stopped";
+            }
+          },
+          { passive: true }
+        );
+
+        // Når videoen er færdig, holder den pause på sidste billede og starter først forfra efter 30 sekunder.
+        video.addEventListener("ended", function () {
+          if (scrolled) {
+            video.dataset.state = "stopped";
+            return;
+          }
+          video.dataset.state = "ended-waiting";
+          restartTimer = setTimeout(function () {
+            restartTimer = null;
+            if (scrolled) {
+              video.dataset.state = "stopped";
+              return;
+            }
+            video.currentTime = 0;
+            var playing = video.play();
+            if (playing && playing.catch) playing.catch(function () {});
+            video.dataset.state = "playing";
+          }, RESTART_DELAY);
+        });
+      })();
     </script>
   </body>
 </html>
