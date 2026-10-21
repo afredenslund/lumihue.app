@@ -159,22 +159,24 @@ a:hover {
 
 .points {
   display: grid;
-  gap: 22px;
+  gap: 36px;
   margin: 0 auto;
   padding: 0;
   max-width: 36em;
   list-style: none;
   color: var(--muted);
-  font-size: 0.95rem;
+  font-size: 0.875rem;
+  line-height: 1.45;
 }
 
-/* Det hvide ord står øverst, den grå forklaring nedenunder i mindre skrift */
+/* Det hvide ord står øverst, den grå forklaring tæt nedenunder i mindre skrift */
 .points strong {
   display: block;
-  margin-bottom: 4px;
+  margin-bottom: 1px;
   color: var(--fg);
   font-size: clamp(1.05rem, 1.6vw, 1.2rem);
   font-weight: 600;
+  line-height: 1.3;
 }
 
 footer {
