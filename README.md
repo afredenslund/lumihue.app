@@ -40,7 +40,7 @@ Adresser:
 
 - `site/sitemap.xml` og `site/robots.txt` ligger i udgivelsen; robots.txt henviser til sitemappet. Cloudflare tillader alle bots på zonen: Bot Fight Mode og AI Labyrinth er slået fra, og AI-politikkerne står på *Allow* for søgning, agenter og træning.
 - **Google Search Console:** domæneejendommen `lumihue.app` er verificeret via en TXT-post i Cloudflare DNS (`google-site-verification=…`). Sitemappet er indsendt. Slet ikke TXT-posten; Google kontrollerer den løbende.
-- **Google Analytics 4:** ejendommen `lumihue.app` med webdatastrømmen `lumihue.app`, målings-id `G-7GD8RTPDVM`. Scriptet i `index.html` sætter Consent Mode til *denied* som standard, så der kun sendes cookieløse målinger, indtil den besøgende har svaret.
+- **Google Analytics 4:** ejendommen `lumihue.app` ligger i den selvstændige Analytics-konto **LumiHue** (flyttet dertil 22. oktober 2026 uden nyt id) med webdatastrømmen `lumihue.app`, målings-id `G-7GD8RTPDVM`. Scriptet i `index.html` sætter Consent Mode til *denied* som standard, så der kun sendes cookieløse målinger, indtil den besøgende har svaret.
 - **Cookievalg:** `site/consent.js` viser et lille banner nederst ved første besøg. *Ja, gerne* gemmer `granted` i `localStorage` (nøglen `lumihue-consent`) og slår fuld måling med cookies til med det samme; *Nej tak* gemmer `denied` og fjerner eventuelle `_ga`-cookies. Valget gælder også ved næste besøg, og linket *Cookievalg* i footeren genåbner banneret, så man kan ændre mening.
 
 ## Logo og rettigheder
